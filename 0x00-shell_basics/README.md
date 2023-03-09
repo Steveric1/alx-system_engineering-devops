@@ -28,3 +28,6 @@ Move the file betty from /tmp/ to /tmp/my_first_directory.
 
 8. Bye bye Betty
 Delete the file betty.
+
+9. Bye bye My first directory
+Delete the directory my_first_directory that is in the /tmp directory.
