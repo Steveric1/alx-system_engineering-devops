@@ -1,0 +1,44 @@
+Flowchart image url -> https://imgur.com/vCtxx0K
+
+Task1:
+Definition And Explanation:
+
+A load balancer, whether in the form of a device or software application, plays a crucial role in distributing network or application traffic across multiple servers. It is integrated into the workflow to distribute traffic among the servers efficiently.
+
+What distribution algorithm your load balancer is configured with and how does it work?:
+The load balancer is configured with a Round Robin Scheduling Algorithm
+The Round-Robin Scheduling Algorithm distributes incoming connection requests by passing each new connection request to the next server in line. This cyclic process ensures an even distribution of connections across multiple servers, contributing to effective load balancing.
+
+Is your load-balancer enabling an Active-Active or Active-Passive setup, explain the difference between both.:
+   The load-balancer enabled an Active-Active setup.
+
+Difference between Active-Active and Active-Passive Setup
+An Active-Active Setup is a configuration or architecture in which multiple instances or components of a system are concurrently and independently active, each actively serving a portion of the overall workload. In this setup, all the instances are simultaneously operational and are capable of processing requests, providing redundancy, and improved performance. An active-active setup aims to distribute the workload among multiple active components to enhance availability, scalability, and fault tolerance.
+
+An Active-Passive Setup is a configuration in which one component, often referred to as the active or primary, is actively serving the workload, while another identical component the “passive”  or “secondary”, remains in a standby or dormant state. The “passive” or “secondary” component is active only when the “active” or “primary” component fails or is taken offline for maintenance. This setup provides redundancy and high availability while minimizing resource consumption during normal operations.
+
+How a database Primary-Replica (Master-Slave) cluster works.
+  A primary-replica “master-slave”, database cluster is a configuration where there is a primary (master) database server that handles both the read and write operations, and one or more replica (slave) database servers that replicate data from the primary (master). This setup is commonly used for improving scalability, ensuring high availability, and providing fault tolerance.
+
+What is the difference between the Primary node and the Replica node in regard to the application?:
+   In regards to the application, in the context of databases, the primary node (master) and replica node (slave) work together to ensure data consistency, availability, and fault tolerance.
+Below is the distinct difference between the primary node and the replica node;
+
+Primary Node (Master):
+The primary node is typically responsible for serving write operations and updates.
+Manages the coordination and distribution of data in the system.
+Acts as the authoritative source for the current state of the system.
+
+Replica Node (Slave):
+The replica node is responsible for serving read operation.
+Also known as the secondary or replica servers.
+Maintains a copy stored on the primary node.
+Provide fault tolerance and high availability by allowing for failover in case the primary node fails.
+It can be used to distribute read traffic and improve overall system performance. 
+
+The issue with this infrastructure design
+Lack of monitoring: 
+Monitoring is essential for keeping track of the performance, health, and status of the server, without monitoring it is difficult to identify issues proactively, leading to potential downtime, performance degradation, or security incidents going unnoticed, as a result, can cause a single point of failure in the infrastructure design. 
+
+Lack of firewall
+A firewall is a crucial component for controlling and monitoring incoming and outgoing traffic based on predetermined security rules. Without the firewall, it is difficult to monitor the incoming and outgoing traffic of the infrastructure and as a result, can cause data breaches, and malicious traffic. 
