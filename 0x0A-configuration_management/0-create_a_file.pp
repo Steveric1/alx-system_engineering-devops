@@ -1,3 +1,4 @@
+#!/usr/bin/pup
 #Using Puppet, create a file in /tmp.
 #Requirements:
 
