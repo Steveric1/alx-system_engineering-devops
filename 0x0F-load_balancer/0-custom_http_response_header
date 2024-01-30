@@ -9,7 +9,6 @@ sudo apt-get install -y nginx
 echo 'Hello World!' | sudo tee /var/www/index.nginx-debian.html
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
 sudo sed -i "46i error_page 404 /custom_404.html;" /etc/nginx/sites-available/default
-
 #configure the nginx server
 sudo sed -i '24i\\n\tadd_header X-Served-By $hostname;' /etc/nginx/sites-available/default
 sudo service nginx restart
