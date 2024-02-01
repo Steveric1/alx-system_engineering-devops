@@ -2,7 +2,7 @@
 #Debugging: find out what’s keeping your Ubuntu container’s Nginx installation from listening on port 80.
 
 #update and install nginx webserver
-# sudo apt-get update -y
+sudo apt-get update -y
 sudo apt-get install -y nginx
 
 #check the nginx version and if it running
