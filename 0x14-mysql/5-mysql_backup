@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+backup_date=$(date +'%d-%m-%y')
+sudo mysqldump -uroot -p"$1" --all-databases > backup.sql
+tar -czvf "$backup_date.tar.gz" backup.sql
