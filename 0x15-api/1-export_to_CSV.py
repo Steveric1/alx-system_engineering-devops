@@ -4,8 +4,8 @@ data in the CSV format."""
 
 import json
 import sys
-import urllib.request
 import csv
+import urllib.request
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/users/"
@@ -16,13 +16,8 @@ if __name__ == "__main__":
     with urllib.request.urlopen(url + sys.argv[1]) as response:
         data = json.loads(response.read().decode("utf-8"))
         with open(sys.argv[1] + ".csv", mode='w') as file:
-            writer = csv.writer(file, delimiter=',', quotechar='"',
-                                quoting=csv.QUOTE_ALL)
-            [
-                writer.writerow([
-                    sys.argv[1],
-                    username,
-                    task.get('completed'),
-                    task.get('title')
-                ]) for task in data
-            ]
+            writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
+            [writer.writerow(
+                [sys.argv[1], username, task.get('completed'),
+                 task.get('title')]
+            ) for task in data]
