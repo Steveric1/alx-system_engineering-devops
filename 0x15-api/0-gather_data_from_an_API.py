@@ -7,12 +7,11 @@ import requests
 import sys
 
 if __name__ == "__main__":
-   url = "https://jsonplaceholder.typicode.com/"
-   emp_name = requests.get(url + "users/{}".format(sys.argv[1])).json()
-   done_tasks = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
-   completed = [t.get("title") for t in done_tasks if t.get("completed") is True]
-   
-   print("Employee {} is done with tasks({}/{}):".format(emp_name.get("name"),
-                                                         len(completed),
-                                                         len(done_tasks)))
-   [print("\t {}".format(task)) for task in completed]
+    url = "https://jsonplaceholder.typicode.com/"
+    emp = requests.get(url + "users/{}".format(sys.argv[1])).json()
+    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
+
+    print("Employee {} is done with tasks({}/{}):".format(
+      emp.get("name"), len(completed), len(todos)))
+    [print("\t {}".format(task)) for task in completed]
