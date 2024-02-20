@@ -3,15 +3,19 @@
 """"Write a Python script that, using this REST API, for a given employee ID,
 returns information about his/her TODO list progress."""
 
-import requests
+import urllib.request
+import json
 import sys
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/"
-    emp = requests.get(url + "users/{}".format(sys.argv[1])).json()
-    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
-    completed = [t.get("title") for t in todos if t.get("completed") is True]
-
-    print("Employee {} is done with tasks({}/{}):".format(
-      emp.get("name"), len(completed), len(todos)))
-    [print("\t {}".format(task)) for task in completed]
+    url = "https://jsonplaceholder.typicode.com/users/"
+    with urllib.request.urlopen(url + sys.argv[1]) as response:
+        data = json.loads(response.read().decode("utf-8"))
+        name = data.get('name')
+    url = "https://jsonplaceholder.typicode.com/todos?userId="
+    with urllib.request.urlopen(url + sys.argv[1]) as response:
+        data = json.loads(response.read().decode("utf-8"))
+        done = [task for task in data if task.get('completed')]
+        print("Employee {} is done with tasks({}/{}):".format(
+           name, len(done), len(data)))
+    [print("\t {}".format(task.get('title'))) for task in done]
