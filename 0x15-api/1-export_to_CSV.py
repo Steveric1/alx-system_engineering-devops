@@ -3,21 +3,18 @@
 data in the CSV format."""
 
 import csv
-import json
+import requests
 import sys
-import urllib.request
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/users/"
-    with urllib.request.urlopen(url + sys.argv[1]) as response:
-        data = json.loads(response.read().decode("utf-8"))
-        username = data.get('username')
-    url = "https://jsonplaceholder.typicode.com/todos?userId="
-    with urllib.request.urlopen(url + sys.argv[1]) as response:
-        data = json.loads(response.read().decode("utf-8"))
-        with open(sys.argv[1] + ".csv", mode='w', newline="") as file:
-            writer = csv.writer(file, quoting=csv.QUOTE_ALL)
-            [writer.writerow(
-                [sys.argv[1], username, task.get("completed"),
-                 task.get("title")]
-            ) for task in data]
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username")
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
+
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        [writer.writerow(
+            [user_id, username, t.get("completed"), t.get("title")]
+         ) for t in todos]
