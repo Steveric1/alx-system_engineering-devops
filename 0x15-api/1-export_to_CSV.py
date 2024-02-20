@@ -15,9 +15,9 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/todos?userId="
     with urllib.request.urlopen(url + sys.argv[1]) as response:
         data = json.loads(response.read().decode("utf-8"))
-        with open(sys.argv[1] + ".csv", mode='w') as file:
-            writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
+        with open(sys.argv[1] + ".csv", mode='w', newline="") as file:
+            writer = csv.writer(file, quoting=csv.QUOTE_ALL)
             [writer.writerow(
-                [sys.argv[1], username, task.get('completed'),
-                 task.get('title')]
+                [sys.argv[1], username, task.get("completed"),
+                 task.get("title")]
             ) for task in data]
