@@ -2,7 +2,7 @@
 
 ### Issue Summary:
 
-#### Duration: The outage occurred from March 9th, 2024, 10:00 PM to March 10th, 2024, 1:00 AM (UTC).
+#### Duration: The outage occurred from March 9th, 2024, 10:00 PM to March 10th, 2024, 1:00 AM (WAT).
 #### Impact: The service downtime affected approximately 30% of our users, resulting in inability to access our platform and loss of revenue.
 #### Root Cause: The root cause of the outage was identified as a database connection issue caused by a misconfiguration during a routine update.
 
